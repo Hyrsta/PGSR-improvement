@@ -1,0 +1,16 @@
+log/
+data/
+.ipynb_checkpoints/
+.vscode/
+gim/
+output/
+full_eval.py
+gather_output_dtu.py
+gather_output_mip360.py
+render.py
+net_train.py
+roma_bridge.py
+train_gim_roma.py
+train_roma-normal.py
+train.py
+README.md

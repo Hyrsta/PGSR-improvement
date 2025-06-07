@@ -1,0 +1,27 @@
+training:
+nohup python train.py -s data/custom_data/droneV3 -m output/droneV3 --max_abs_split_points 0 --opacity_cull_threshold 0.05 > logs/train_droneV3.log 2>&1 & 
+
+---
+rendering:
+nohup python new_render-old.py -m output/droneV3 --max_depth 10.0 --voxel_size 0.02 --error_colormap hot viridis > logs/droneV3.log 2>&1 &
+tail -f logs/droneV3.log
+
+nohup python new_render.py -m output/droneV3 --max_depth 10.0 --voxel_size 0.02 --error_colormap hot --create_heatmap_mesh > logs/droneV3.log 2>&1 &
+tail -f logs/droneV3.log
+ 
+nohup python scripts/run_mip360.py > log/run_mip360_2.log 2>&1 &
+tail -f log/run_mip360_2.log
+
+nohup python scripts/run_dtu.py > log/roma_15000_0.6_dyna_test2.log 2>&1 &
+tail -f log/roma_15000_0.6_dyna_test2.log
+
+nohup python scripts/run_dtu_gimroma.py > log/gim_roma_15000_0.6_dyna.log 2>&1 &
+tail -f log/gim_roma_15000_0.6_dyna.log
+
+nohup python scripts/run_droneV3.py > log/run_droneV3_base.log 2>&1 &
+tail -f log/run_droneV3_base.log
+
+python reoptim_grouping.py
+python new_train.py -r2 --ncc_scale 0.5 -s data/dtu_dataset/dtu/scan24 -m output/dtu/dtu_scan24/test --start_checkpoint output/dtu/dtu_scan24/test/chkpnt30000.pth --save_iterations 31000
+
+python new_render.py -m output/droneV3/base --num_cluster 1 --voxel_size 0.005 --max_depth 5.0 --error_colormap hot

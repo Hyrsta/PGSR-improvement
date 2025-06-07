@@ -3,8 +3,11 @@ import os
 scenes = ['bicycle', 'bonsai', 'counter', 'flowers', 'garden', 'kitchen', 'room', 'stump', 'treehill']
 factors = ['4', '2', '2', '4', '4', '2', '2', '4', '4']
 data_devices = ['cpu', 'cuda', 'cuda', 'cuda', 'cuda', 'cuda', 'cuda', 'cuda', 'cuda']
-data_base_path='mip360'
-out_base_path='output_mip360'
+scenes = ['flowers','room', 'treehill']
+factors = ['4', '2', '4']
+data_devices = ['cuda', 'cuda', 'cuda']
+data_base_path='data/mip360'
+out_base_path='output/mip360'
 out_name='test'
 gpu_id=0
 
@@ -19,11 +22,16 @@ for id, scene in enumerate(scenes):
     print(cmd)
     os.system(cmd)
 
-    common_args = f"--quiet --skip_train"
-    cmd = f'CUDA_VISIBLE_DEVICES={gpu_id} python render.py -m {out_base_path}/{scene}/{out_name} {common_args}' 
+    # common_args = f"--quiet --skip_train"
+    # cmd = f'CUDA_VISIBLE_DEVICES={gpu_id} python render.py -m {out_base_path}/{scene}/{out_name} {common_args}' 
+    # print(cmd)
+    # os.system(cmd)
+
+    common_args = f"--quiet --error_colormap hot --create_heatmap_mesh"
+    cmd = f'CUDA_VISIBLE_DEVICES={gpu_id} python new_render.py -m {out_base_path}/{scene}/{out_name} {common_args}' 
     print(cmd)
     os.system(cmd)
-    
+
     cmd = f'CUDA_VISIBLE_DEVICES={gpu_id} python metrics.py -m {out_base_path}/{scene}/{out_name}'
     print(cmd)
     os.system(cmd)

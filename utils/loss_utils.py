@@ -15,6 +15,10 @@ from torch.autograd import Variable
 from math import exp
 import numpy as np
 
+def new_l1_loss(network_output, gt,mask):
+    diff = torch.abs(network_output - gt) * mask
+    return diff.mean()
+
 def l1_loss(network_output, gt):
     return torch.abs((network_output - gt)).mean()
 
