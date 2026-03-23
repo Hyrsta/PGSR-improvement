@@ -5,7 +5,7 @@ This repository extends [PGSR](https://github.com/zju3dv/PGSR) (Planar-based Gau
 1. **Uncertainty Map Visualization**: converts Gaussian anisotropy into per-splat heatmaps to expose fitting anomalies that global metrics miss.
 2. **RoMa-based Multi-view Geometric Prior**: uses [RoMa](https://github.com/Parskatt/RoMa) dense feature matching to add a cross-view reprojection loss that constrains Gaussians closer to the true surface.
 
-Together, these reduce the mean Chamfer Distance on DTU (15 scenes) from **0.53 mm → 0.51 mm**, achieving state-of-the-art accuracy among all published neural field and Gaussian splatting surface reconstruction methods at the time of writing.
+Together, these reduce the mean Chamfer Distance on DTU (15 scenes) from **0.53 mm to 0.51 mm**, the best result among published neural field and Gaussian splatting surface reconstruction methods on this benchmark.
 
 > **Context:** This work was conducted as the undergraduate thesis _"High-quality 3D Reconstruction Technology Research"_ at Northwestern Polytechnical University (Jun 2024 – Jun 2025), supervised by Prof. Le Liu.
 
