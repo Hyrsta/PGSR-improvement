@@ -2,8 +2,8 @@
 
 This repository extends [PGSR](https://github.com/zju3dv/PGSR) (Planar-based Gaussian Splatting for Efficient and High-Fidelity Surface Reconstruction) with two contributions:
 
-1. **Uncertainty Map Visualization** — Converts Gaussian anisotropy into per-splat heatmaps to expose fitting anomalies that global metrics miss.
-2. **RoMa-based Multi-view Geometric Prior** — Uses [RoMa](https://github.com/Parskatt/RoMa) dense feature matching to add a cross-view reprojection loss that constrains Gaussians closer to the true surface.
+1. **Uncertainty Map Visualization**: converts Gaussian anisotropy into per-splat heatmaps to expose fitting anomalies that global metrics miss.
+2. **RoMa-based Multi-view Geometric Prior**: uses [RoMa](https://github.com/Parskatt/RoMa) dense feature matching to add a cross-view reprojection loss that constrains Gaussians closer to the true surface.
 
 Together, these reduce the mean Chamfer Distance on DTU (15 scenes) from **0.53 mm → 0.51 mm**, achieving state-of-the-art accuracy among all published neural field and Gaussian splatting surface reconstruction methods at the time of writing.
 
@@ -31,7 +31,7 @@ Standard evaluation metrics (PSNR, SSIM, LPIPS, Chamfer Distance) report scene-l
 2. Applying log-normalization and percentile clipping (50th–100th) to handle the heavy-tailed scale distribution.
 3. Mapping the result through a colormap (`hot` or `viridis`) and overlaying it on grayscale renders.
 
-This produces per-pixel heatmaps that highlight regions where Gaussians are abnormally stretched or poorly fitted — useful for diagnosing reconstruction failures in textureless or reflective areas.
+This produces per-pixel heatmaps that highlight regions where Gaussians are abnormally stretched or poorly fitted, which helps diagnose reconstruction failures in textureless or reflective areas.
 
 ### RoMa Geometric Prior Loss
 
@@ -223,9 +223,9 @@ python metrics.py -m output/dtu/scan24
 
 ## Acknowledgements
 
-- [PGSR](https://github.com/zju3dv/PGSR) — Chen et al., "Planar-based Gaussian Splatting for Efficient and High-Fidelity Surface Reconstruction" (2024)
-- [RoMa](https://github.com/Parskatt/RoMa) — Edstedt et al., "RoMa: Robust Dense Feature Matching" (CVPR 2024)
-- [3DGS](https://github.com/graphdeco-inria/gaussian-splatting) — Kerbl et al., "3D Gaussian Splatting for Real-Time Radiance Field Rendering" (SIGGRAPH 2023)
+- [PGSR](https://github.com/zju3dv/PGSR): Chen et al., "Planar-based Gaussian Splatting for Efficient and High-Fidelity Surface Reconstruction" (2024)
+- [RoMa](https://github.com/Parskatt/RoMa): Edstedt et al., "RoMa: Robust Dense Feature Matching" (CVPR 2024)
+- [3DGS](https://github.com/graphdeco-inria/gaussian-splatting): Kerbl et al., "3D Gaussian Splatting for Real-Time Radiance Field Rendering" (SIGGRAPH 2023)
 
 ## License
 
