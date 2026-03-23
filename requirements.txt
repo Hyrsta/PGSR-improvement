@@ -4,3 +4,9 @@ plyfile
 opencv-python
 lpips
 trimesh
+romatch
+tqdm
+tensorboard
+matplotlib
+numpy
+Pillow

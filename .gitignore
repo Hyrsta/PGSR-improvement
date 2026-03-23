@@ -1,9 +1,30 @@
+# Data and outputs
 log/
 data/
-.ipynb_checkpoints/
-.vscode/
-gim/
 output/
+assets/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+dist/
+build/
+*.so
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Deprecated/experimental scripts
 full_eval.py
 gather_output_dtu.py
 gather_output_mip360.py
@@ -13,6 +34,4 @@ roma_bridge.py
 train_gim_roma.py
 train_roma-normal.py
 train.py
-assets/
-.DS_Store
-__pycache__/
+gim/
